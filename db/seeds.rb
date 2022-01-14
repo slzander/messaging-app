@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Message.destroy_all
+User.destroy_all
+
+fred = User.create(
+  name: 'Fred',
+  email: 'fred@guild.com'
+)
+
+tina = User.create(
+  name: 'Tina',
+  email: 'tina@guild.com'
+)
+
+105.times {
+  Message.create(sender: tina, recipient: fred, body: Faker::Lorem.sentence)
+}
