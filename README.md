@@ -1,4 +1,4 @@
-# Messenger Api
+# Messenger API
 
 ## Overview
 
@@ -50,7 +50,7 @@ This is a basic Rails API to enable messaging between users.
 
   ```
 
-  1. You can create a new message at `/messages`. Include the following in your POST request (sender and recipient ids refer to their user ids):
+  6. You can create a new message at `/messages`. Include the following in your POST request (sender and recipient ids refer to their user ids):
 
   ```
     {
