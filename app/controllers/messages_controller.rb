@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action :set_user, only: [:index]
 
   def index
-    messages = MessageFilterService.new(@user).filter
+    messages = MessageFilterService.new(@user, message_params).filter
     render json: messages
   end
 
@@ -23,6 +23,6 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:sender_id, :recipient_id, :body)
+    params.permit(:sender_id, :recipient_id, :body)
   end
 end

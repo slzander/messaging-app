@@ -1,6 +1,7 @@
 class MessageFilterService
-  def initialize(user)
+  def initialize(user, message_params)
     @user = user
+    @sender_id = message_params[:sender_id] if message_params.key?(:sender_id)
   end
 
   def filter
@@ -10,7 +11,9 @@ class MessageFilterService
   private
 
   def user_messages
-    messages = Message.where(sender_id: @user.id)
+    messages = Message.where(recipient_id: @user.id)
+    messages = messages.where(sender_id: @sender_id) unless @sender_id.nil?
+
     filter_within_last_month(messages)
   end
 
